@@ -18,8 +18,8 @@ services:
     depends_on:
       - db
     volumes:
-      - /home/paolo/WebApplications/TeleCLOUD/prelive/userconfig/:/opt/jboss/userconfig/       # persistent data storage for user.config
-      - /home/paolo/WebApplications/TeleCLOUD/prelive/clouddata/:/opt/jboss/installer/         # persistent data storage for TeleCloud-OFFLINE
+      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/userconfig/:/opt/jboss/userconfig/       # persistent data storage for user.config
+      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/clouddata/:/opt/jboss/installer/         # persistent data storage for TeleCloud-OFFLINE
     ports:
       - "8080:8080" # application
       - "8443:8443" # application SSL HTTPS
@@ -35,7 +35,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
 #      - ./workdir/db/init/:/docker-entrypoint-initdb.d/ # init database
-      - /home/paolo/WebApplications/TeleCLOUD/prelive/mysqldata/:/var/lib/mysql/              # data storage
+      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/mysqldata/:/var/lib/mysql/              # data storage
     ports:
       - "3306:3306"
       
@@ -45,9 +45,9 @@ services:
     restart: always
     user: "0"
     volumes:
-      - /home/paolo/WebApplications/TeleCLOUD/prelive/mysqlbkp/:/db/                          # database BACKUP
-      - /home/paolo/WebApplications/TeleCLOUD/prelive/scripts.d/pre-backup/:/scripts.d/pre-backup/             # PREBACKUP script
-      - /home/paolo/WebApplications/TeleCLOUD/prelive/scripts.d/post-backup/:/scripts.d/post-backup/           # POSTBACKUP script
+      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/mysqlbkp/:/db/                          # database BACKUP
+      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/scripts.d/pre-backup/:/scripts.d/pre-backup/             # PREBACKUP script
+      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/scripts.d/post-backup/:/scripts.d/post-backup/           # POSTBACKUP script
     environment:
       - DB_DUMP_TARGET=" /db smb://193.100.100.204/Sharing/disk1/TeleCLOUD/prelive "  # ATTENZIONE, è necessario uno spazio dopo il primo doppio apice e prima del d.a. finale !!!!!
       - SMB_USER=cremonese
