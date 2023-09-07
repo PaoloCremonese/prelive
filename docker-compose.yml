@@ -3,7 +3,7 @@ version: "2"
 services:
   app:
     container_name: "prelive"
-    image: "paolocremonese/wf-9.0.2.final:scndtry"
+    image: "paolocremonese/wf-9.0.2.final:thirdtry"
     environment:
       - WILDFLY_USER=admin
       - WILDFLY_PASS=cremonese
@@ -20,6 +20,7 @@ services:
     volumes:
       - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/userconfig/:/opt/jboss/userconfig/       # persistent data storage for user.config
       - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/clouddata/:/opt/jboss/installer/         # persistent data storage for TeleCloud-OFFLINE
+      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/well-known/:/opt/jboss/.well-known/      # persistent data storage for .well-known (ACME key process)
     ports:
       - "8080:8080" # application
       - "8443:8443" # application SSL HTTPS
