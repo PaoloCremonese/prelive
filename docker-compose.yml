@@ -18,9 +18,9 @@ services:
     depends_on:
       - db
     volumes:
-      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/userconfig/:/opt/jboss/userconfig/       # persistent data storage for user.config
-      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/clouddata/:/opt/jboss/installer/         # persistent data storage for TeleCloud-OFFLINE
-      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/well-known/:/opt/jboss/.well-known/      # persistent data storage for .well-known (ACME key process)
+      - /home/teledata/prelive/TeleCLOUD/prelive/userconfig/:/opt/jboss/userconfig/       # persistent data storage for user.config
+      - /home/teledata/prelive/TeleCLOUD/prelive/clouddata/:/opt/jboss/installer/         # persistent data storage for TeleCloud-OFFLINE
+      - /home/teledata/prelive/TeleCLOUD/prelive/well-known/:/opt/jboss/.well-known/      # persistent data storage for .well-known (ACME key process)
     ports:
       - "8080:8080" # application
       - "8443:8443" # application SSL HTTPS
@@ -36,7 +36,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     volumes:
 #      - ./workdir/db/init/:/docker-entrypoint-initdb.d/ # init database
-      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/mysqldata/:/var/lib/mysql/              # data storage
+      - /home/teledata/prelive/TeleCLOUD/prelive/mysqldata/:/var/lib/mysql/              # data storage
     ports:
       - "3306:3306"
       
@@ -46,11 +46,11 @@ services:
     restart: always
     user: "0"
     volumes:
-      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/mysqlbkp/:/db/                          # database BACKUP
-      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/scripts.d/pre-backup/:/scripts.d/pre-backup/             # PREBACKUP script
-      - /home/paolo/TelecloudDockered/TeleCLOUD/prelive/scripts.d/post-backup/:/scripts.d/post-backup/           # POSTBACKUP script
+      - /home/teledata/prelive/TeleCLOUD/prelive/mysqlbkp/:/db/                          # database BACKUP
+      - /home/teledata/prelive/TeleCLOUD/prelive/scripts.d/pre-backup/:/scripts.d/pre-backup/             # PREBACKUP script
+      - /home/teledata/prelive/TeleCLOUD/prelive/scripts.d/post-backup/:/scripts.d/post-backup/           # POSTBACKUP script
     environment:
-      - DB_DUMP_TARGET=" /db smb://193.100.100.204/Sharing/disk1/TeleCLOUD/prelive "  # ATTENZIONE, è necessario uno spazio dopo il primo doppio apice e prima del d.a. finale !!!!!
+      - DB_DUMP_TARGET=/db
       - SMB_USER=cremonese
       - SMB_PASS=Teledata011
       - DB_USER=adminAgPVh9q
