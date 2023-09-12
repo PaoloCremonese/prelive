@@ -39,7 +39,7 @@ services:
       - /home/teledata/prelive/TeleCLOUD/prelive/mysqldata/:/var/lib/mysql/              # data storage
     ports:
 #      - "3306:3306"
-      - "3306"         # per evitare di esporre esternamente la porta di mysql
+      - "127.0.0.1:3306:3306"         # per evitare di esporre esternamente la porta di mysql
       
   backup:
     container_name: "pl-backup"
