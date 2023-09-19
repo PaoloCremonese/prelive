@@ -62,7 +62,7 @@ services:
       - SMB_PASS=Teledata011
       - DB_USER=adminAgPVh9q
       - DB_PASS=8fRB2AWC92Mi
-      - DB_DUMP_BEGIN=0825                    # WARNING .. USE GMT TIME !!!
+      - DB_DUMP_BEGIN=0030                    # WARNING .. USE GMT TIME !!!
       - DB_SERVER=db
       - DB_DUMP_DEBUG=true
       - DB_DUMP_SAFECHARS=true
