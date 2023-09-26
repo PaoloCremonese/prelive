@@ -23,7 +23,7 @@ RUN cd /opt/jboss/wildfly/modules/ \
 # ADD standaloneTELECLOUD.xml /opt/jboss/wildfly/standalone/configuration
 ADD standalone.xml /opt/jboss/wildfly/standalone/configuration
 ADD telecloudRealm.properties /opt/jboss/wildfly/standalone/configuration
-ADD teledata.website.key /opt/jboss/wildfly/standalone/configuration
+# ADD teledata.website.key /opt/jboss/wildfly/standalone/configuration
 ADD teledata.website.keystore /opt/jboss/wildfly/standalone/configuration
 ADD libTeledataONEcfgIF.so /opt/jboss/wildfly/standalone/lib/ext
 
